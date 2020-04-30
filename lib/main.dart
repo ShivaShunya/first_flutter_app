@@ -53,11 +53,6 @@ class _MyAppState extends State<MyApp> {
               questions[_questionIndex]
             ),
             RaisedButton(
-              child: Text('Click to change this question buddy !'),
-              onPressed: _onQuestionChanged,
-              color: Colors.blue,
-            ),
-            RaisedButton(
               child: Text(colorAndAnimalOptions[_questionIndex][0]),
               onPressed: () => print('Answered: ' + colorAndAnimalOptions[_questionIndex][0]),
               color: Colors.grey,
@@ -66,6 +61,11 @@ class _MyAppState extends State<MyApp> {
               child: Text(colorAndAnimalOptions[_questionIndex][1]),
               onPressed: () => print('Answered: ' + colorAndAnimalOptions[_questionIndex][1]),
               color: Colors.grey,
+            ),
+            RaisedButton(
+              child: Text('Click to change this question buddy !'),
+              onPressed: _onQuestionChanged,
+              color: Colors.blue,
             ),
           ],
         ),      
