@@ -10,6 +10,7 @@ class Question extends StatelessWidget {
   Widget build(BuildContext context) {    
     return Center(
       child: Container(
+        width: double.infinity,
         margin: EdgeInsets.all(10),
         color: Colors.lightGreen,
         child: Text(
