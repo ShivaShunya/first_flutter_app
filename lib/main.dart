@@ -6,17 +6,36 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // void onAnswerQuestion() {
-  //   print('Answered !');
-  // }
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MyAppState();
+  }
+}
+
+
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
+
+  void _onQuestionChanged() {
+    print('Changed question !');
+    setState(() {
+      _questionIndex++;
+      _questionIndex = _questionIndex % 2;      
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    // var questions = [
-    //   'What color do you like ?',
-    //   'What\'s your favourite animal ?'
-    // ];
+    var questions = [
+      'What color do you like ?',
+      'Which animal do you prefer ?'
+    ];
+    var colorAndAnimalOptions = [
+      ['Green', 'Red'],
+      ['Snake', 'Bird'],      
+    ];
 
     return MaterialApp(
       home: Scaffold(
@@ -28,10 +47,22 @@ class MyApp extends StatelessWidget {
           ),
         body: Column(
           children: [
-            Text('Question ?'),
-            RaisedButton(child: Text('Answer 1'), onPressed: () => print('Answered 1'),),
-            RaisedButton(child: Text('Answer 2'), onPressed: () => print('Answered 2'),),
-            RaisedButton(child: Text('Answer 3'), onPressed: () => print('Answered 3'),),
+            Text(questions[_questionIndex]),
+            RaisedButton(
+              child: Text('Click to change the question'),
+              onPressed: _onQuestionChanged,
+              color: Colors.blue,
+            ),
+            RaisedButton(
+              child: Text(colorAndAnimalOptions[_questionIndex][0]),
+              onPressed: () => print('Answered: ' + colorAndAnimalOptions[_questionIndex][0]),
+              color: Colors.grey,
+            ),
+            RaisedButton(
+              child: Text(colorAndAnimalOptions[_questionIndex][1]),
+              onPressed: () => print('Answered: ' + colorAndAnimalOptions[_questionIndex][1]),
+              color: Colors.grey,
+            ),
           ],
         ),      
       ),
